@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="Book_Search" href="img/Book_Search.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="controllers/ts.entertaiment.js"></script>
+
+    <title>BIBLIOTECA_JSPH</title>
+</head>
+
+<body ng-app="tsEntertainmentApp" ng-controller="VenuesListCtrl">
+    <div class="container">
+        <div class="col-12">
+            <div class="col-12 mt-3">
+                <h1>BIBLIOTECA JSPH - TÍTULOS</h1>
+                <hr>
+                <h6 class="mt-2">
+                  <i>"Hay quienes no pueden imaginar un mundo sin pájaros; hay quienes no pueden imaginar un mundo sin agua; en lo que a mí se refiere, soy incapaz de imaginar un mundo sin libros." Jorge Luis Borges</i><br>
+                  <i>"El hecho es que la poesía no son los libros de la biblioteca… La poesía es el encuentro del lector con el libro, el descubrimiento del libro." Jorge Luis Borges</i><br>
+                  <i>"El conocimiento es un recuerdo colectivo." Jorge Luis Borges</i><br>
+                </h6>
+                <hr/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input ng-model="query" class="form-control input-lg" placeholder="Ingresar el título">
+                </div>
+                <hr />
+                <div class="">
+                  <p> Importante: </p>
+                    <!-- Notas sobre libros digitales
+                    <p style="font-size:12px"><img ng-src="img/icono_pdf.png" height="32px" width="32px"> Disponible en la Web.</p> -->
+                  <p style="font-size:12px"><img ng-src="img/icono_fisico.png" height="32px" width="32px"> Disponible en fisico.</p>
+
+                  <hr />
+                  <p> Grupos de temas: </p>
+                  <a target="_blank">1. Cusco.</a> <br>
+                  <a target="_blank">2. Economía.</a><br>
+                  <a target="_blank">3. Historia del Perú.</a><br>
+                  <a target="_blank">4. Historia Universal.</a><br>
+                  <a target="_blank">5. Literatura.</a><br>
+                  <a target="_blank">6. Matemática.</a><br>
+                  <a target="_blank">7. Otro</a>
+                  <hr />
+                  <p> Nota: </p>
+                  <div class="info" style="font-size:12px">Todos los libros estan disponibles en la casa</div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="result">Términos buscados: <b>{{query}}</b></div>
+                <div ng-repeat="venue in venues | filter:query" class="card shadow p-3 mb-4 bg-white rounded">
+                    <div class="cards">
+                        <h5 class="content"><b>Título: </b >{{venue.titulo}} <a href=tel:{{venue.link}}><img ng-src="{{venue.icono}}" height="25px" width="25px"</a></a></h5>
+                        <p class="content"><b>Autor: </b><a>{{venue.autor}}</a>
+                          <button class="button3"><a data-toggle="tooltip" title={{venue.Grupo}}>{{venue.grupo}}</a></button>
+                        </p>
+                        <p class="content"><b>Año de publicación: </b> {{venue.publicacion}}</p>
+                        <p class="content"><b>Editorial: </b> {{venue.editorial}}</p>
+                        <p class="content"><b>Edición: </b><a> {{venue.edicion}}</a></p>
+                        <p class="content"><b>Tipo de material: </b><a> {{venue.tipo_libro}}</a></p>
+                        <p class="content"><b>Material: </b><a> {{venue.material}}</a></p>
+                        <p class="content"><b>Temática: </b><a> {{venue.tematica}}</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+<script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
